@@ -22,7 +22,7 @@ node{
 
     stage('Push Docker Image'){
           withCredentials([usernameColonPassword(credentialsId: 'dockerhub', variable: 'password')]) {
-          sh "docker login -u idowudevops -p ${password}"
+          sh "docker login -u idowudevops -p ${dockerhub}"
         }
         sh 'docker push idowudevops/spring-boot-mongo'
      }
