@@ -20,7 +20,7 @@ node{
           sh "docker login -u idowudevops -p Windyspark77!"
          sh "docker tag acadalearning/spring-boot-mongo idowudevops/spring-boot-mongo"
 
-        sh 'docker push idowudevops/spring-boot-mongo:first'
+        sh 'docker push idowudevops/spring-boot-mongo'
      }
      
      stage("Deploy To Kuberates Cluster"){
