@@ -13,17 +13,13 @@ node{
     stage('Build Docker Image'){
         sh 'docker build -t acadalearning/spring-boot-mongo .'
     }
-    
-    
-    stage('Build Docker Image'){
-        sh 'docker build -t acadalearning/spring-boot-mongo .'
-    }
-    // some block
+
 
     stage('Push Docker Image'){
           //withCredentials([usernameColonPassword(credentialsId: 'dockerhub', variable: 'password')]) {
           sh "docker login -u idowudevops -p Windyspark77!"
-        
+         sh "docker tag acadalearning/spring-boot-mongo idowudevops/spring-boot-mongo"
+
         sh 'docker push idowudevops/spring-boot-mongo:first'
      }
      
