@@ -24,7 +24,7 @@ node{
           //withCredentials([usernameColonPassword(credentialsId: 'dockerhub', variable: 'password')]) {
           sh "docker login -u idowudevops -p Windyspark77!"
         
-        sh 'docker push idowudevops/spring-boot-mongo'
+        sh 'docker push idowudevops/spring-boot-mongo:first'
      }
      
      stage("Deploy To Kuberates Cluster"){
