@@ -19,7 +19,7 @@ node{
         sh 'docker build -t acadalearning/spring-boot-mongo .'
     }
     // some block
-}
+
     stage('Push Docker Image'){
           withCredentials([usernameColonPassword(credentialsId: 'dockerhub', variable: 'password')]) {
           sh "docker login -u idowudevops -p ${password}"
