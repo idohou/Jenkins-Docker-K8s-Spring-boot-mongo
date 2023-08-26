@@ -10,17 +10,21 @@ node{
       sh "${mavenCMD} clean package"
       
     } 
+    stage('Build Docker Image'){
+        sh 'docker build -t acadalearning/spring-boot-mongo .'
+    }
     
     
     stage('Build Docker Image'){
         sh 'docker build -t acadalearning/spring-boot-mongo .'
     }
-    
+    // some block
+}
     stage('Push Docker Image'){
-        withCredentials([string(credentialsId: 'DOKCER_HUB_PASSWORD', variable: 'DOKCER_HUB_PASSWORD')]) {
-          sh "docker login -u acadalearning -p ${DOKCER_HUB_PASSWORD}"
+          withCredentials([usernameColonPassword(credentialsId: 'dockerhub', variable: 'password')]) {
+          sh "docker login -u idowudevops -p ${password}"
         }
-        sh 'docker push acadalearning/spring-boot-mongo'
+        sh 'docker push idowudevops/spring-boot-mongo'
      }
      
      stage("Deploy To Kuberates Cluster"){
